@@ -1,6 +1,26 @@
 var add= document.getElementById('add'), myNodList = document.getElementsByTagName('li');
 var del = document.getElementsByClassName('close');
 var list = [];
+var li = document.createElement('li');
+
+
+function recuperation(){
+    var myList = document.getElementById("myUL");
+    var input = document.getElementById('myInput');
+    var sauvegard= localStorage.getItem('tach'); // à noter sauvegarde est un string
+    list = sauvegard.split(',');// string into array and store in list
+    list.forEach(element => {
+        myList.appendChild(li);
+        var span = document.createElement('span');
+        var txt = document.createTextNode("\u00D7");
+        span.className = "close";
+        span.appendChild(txt);
+        li.appendChild(document.createTextNode(element));
+        console.log(element);
+        li.appendChild(span);
+    });
+}
+
 function creation(){
     var li = document.createElement('li');
     var input = document.getElementById('myInput');
@@ -59,3 +79,5 @@ setInterval(()=>{for (i = 0; i<del.length; i++){
         //this.localStorage.removeItem('');// efface le cache sur le dossier
     });}
 }, 500)
+
+window.addEventListener('load', recuperation)
