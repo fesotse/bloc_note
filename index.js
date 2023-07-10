@@ -1,24 +1,30 @@
 var add= document.getElementById('add'), myNodList = document.getElementsByTagName('li');
 var del = document.getElementsByClassName('close');
 var list = [];
-var li = document.createElement('li');
 
 
 function recuperation(){
+    //note pour la récupération, les taches déjà accomplis deviennent normal (non coché)
+    alert('Récupération des taches antérieurs')
     var myList = document.getElementById("myUL");
     var input = document.getElementById('myInput');
     var sauvegard= localStorage.getItem('tach'); // à noter sauvegarde est un string
     list = sauvegard.split(',');// string into array and store in list
-    list.forEach(element => {
-        myList.appendChild(li);
-        var span = document.createElement('span');
-        var txt = document.createTextNode("\u00D7");
-        span.className = "close";
-        span.appendChild(txt);
-        li.appendChild(document.createTextNode(element));
-        console.log(element);
-        li.appendChild(span);
-    });
+    if (list!=""){
+        list.forEach(element => {
+            var li = document.createElement('li');
+            myList.appendChild(li);
+            var span = document.createElement('span');
+            var txt = document.createTextNode("\u00D7");
+            span.className = "close";
+            span.appendChild(txt);
+            li.appendChild(document.createTextNode(element));
+            console.log(element);
+            li.appendChild(span);
+        });
+    } else{
+
+    }
 }
 
 function creation(){
@@ -27,8 +33,8 @@ function creation(){
     var inputValue = input.value;
     var text = document.createTextNode(inputValue);
     var myList = document.getElementById("myUL");
-    if (inputValue !==""){
-        myList.appendChild(li); // verification de saisie de donnée pour la tache
+    if (inputValue !==""){ // verification de saisie de donnée pour la tache
+        myList.appendChild(li); 
         li.appendChild(text);
         list.push(inputValue);
         console.log(list);
