@@ -8,7 +8,7 @@ function recuperation(){
     alert('Récupération des taches antérieurs')
     var myList = document.getElementById("myUL");
     var input = document.getElementById('myInput');
-    var sauvegard= localStorage.getItem('tach'); // à noter sauvegarde est un string
+    var sauvegard= localStorage.getItem('tache'); // à noter sauvegarde est un string
     list = sauvegard.split(',');// string into array and store in list
     if (list!=""){
         list.forEach(element => {
@@ -38,8 +38,8 @@ function creation(){
         li.appendChild(text);
         list.push(inputValue);
         console.log(list);
-        localStorage.setItem('tach',`${list}`);
-        console.log(localStorage.getItem('tach'));
+        localStorage.setItem('tache',`${list}`);
+        console.log(localStorage.getItem('tache'));
         document.getElementById('myInput').value = "";
         var span = document.createElement('span');
         var txt = document.createTextNode("\u00D7");
@@ -80,7 +80,7 @@ setInterval(()=>{for (i = 0; i<del.length; i++){
         this.parentElement.remove();
         //update the list
         (positionDelete!=-1)?list.splice(positionDelete,1): console.log("pas de mots");
-        localStorage.setItem('tach',`${list}`); //update of the local storage
+        localStorage.setItem('tache',`${list}`); //update of the local storage
 
         //this.localStorage.removeItem('');// efface le cache sur le dossier
     });}

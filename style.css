@@ -4,7 +4,10 @@
     box-sizing: border-box;
 }
 body {
-    margin:0;
+    display: flex;
+    flex-direction: column;
+    margin:auto;
+    max-width:550px ;
     min-width : 250px;
 }
 ul{
